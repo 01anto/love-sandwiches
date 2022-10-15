@@ -1,4 +1,5 @@
 import gspread
+
 from google.oauth2.service_account import Credentials
 
 SCOPE = [
@@ -12,6 +13,7 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('love_sandwiches')
 
+
 def get_sales_data():
     """
     Get sales figures input from the user.
@@ -21,9 +23,9 @@ def get_sales_data():
     print("Example: 10,20,30,40,50,60\n")
 
     data_str = input("Enter your data here: ")
-    
     sales_data = data_str.split(",")
     validate_data(sales_data)
+
 
 def validate_data(values):
     """
@@ -39,5 +41,6 @@ def validate_data(values):
                 )
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")
+
 
 get_sales_data()
